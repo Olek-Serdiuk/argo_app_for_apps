@@ -1,28 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dashboard
+  name: helm-guestbook
+  namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: ''
-    namespace: kubernetes-dashboard
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: /
-    repoURL: 'https://github.com/Olek-Serdiuk/k8s-dashboard.git'
-    targetRevision: HEAD
+    namespace: helm-guestbook
+    name: dev-cluster
   project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: false
-    syncOptions:
-      - PrunePropagationPolicy=background
-    retry:
-      limit: 2
-      backoff:
-        duration: 5s
-        maxDuration: 3m0s
-        factor: 2
+  source:
+    path: .
+    repoURL: https://github.com/Olek-Serdiuk/k8s-dashboard.git
+    targetRevision: HEAD
