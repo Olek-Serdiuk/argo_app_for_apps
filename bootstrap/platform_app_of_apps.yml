@@ -1,16 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-app
+  name: Main Application
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: default
-    name: in-cluster
+    server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: apps
+    path: platform/
     repoURL: https://github.com/Olek-Serdiuk/argo_app_for_apps
     targetRevision: HEAD
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false

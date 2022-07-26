@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ArgoRollouts
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: kubernetes-dashboard
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    path: platform_plugins/argorollouts
+    repoURL: https://github.com/Olek-Serdiuk/argo_app_for_apps
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
