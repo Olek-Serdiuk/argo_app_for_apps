@@ -11,7 +11,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: .
+    path: overlays/staging/
     repoURL: https://github.com/Olek-Serdiuk/kustomize-sample-app.git
     targetRevision: HEAD
   syncPolicy:
