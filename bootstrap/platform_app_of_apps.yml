@@ -14,8 +14,8 @@ spec:
     path: platform/
     repoURL: https://github.com/Olek-Serdiuk/argo_app_for_apps
     targetRevision: HEAD
-    directory:
-      recurse: true
+    # directory:
+    #   recurse: true
   syncPolicy:
     automated:
       prune: false

@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dashboard
+  name: test
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: kubernetes-dashboard
+    namespace: default
     server: 'https://kubernetes.default.svc'
   project: default
   source:
     path: .
-    repoURL: https://github.com/Olek-Serdiuk/k8s-dashboard.git
+    repoURL: https://github.com/Olek-Serdiuk/kustomize-sample-app.git
     targetRevision: HEAD
   syncPolicy:
     automated:
