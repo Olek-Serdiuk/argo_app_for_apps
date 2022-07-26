@@ -11,8 +11,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: overlays/staging/
-    repoURL: https://github.com/Olek-Serdiuk/kustomize-sample-app.git
+    path: overlays/prod/
+    repoURL: https://github.com/Olek-Serdiuk/k8s-dashboard.git
     targetRevision: HEAD
   syncPolicy:
     automated:
